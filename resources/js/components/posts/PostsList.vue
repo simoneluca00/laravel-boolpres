@@ -5,6 +5,9 @@
         </div>
 
         <div v-if="posts.length">
+
+            <Pagination :paginationProps="pagination" />
+
             <div class="card my-3" v-for="post in posts" :key="post.id">
                 <h4 class="card-header">{{post.title}}</h4>
                 <div class="card-body">
@@ -35,17 +38,20 @@
 <script>
     import axios from 'axios';
     import Loader from '../includes/Loader.vue';
+    import Pagination from '../includes/Pagination.vue';
 
     export default {
         name: "PostsList",
 
         components: {
             Loader,
+            Pagination
         },
 
         data() {
             return {
                 posts: [],
+                pagination: {},
                 isLoading: true,
             }
         },
@@ -57,7 +63,17 @@
                 axios.get('http://127.0.0.1:8000/api/posts')
                     .then((res) => {
 
-                        this.posts = res.data.posts;
+                        // console.log(res.data.posts.data);
+
+                        const {data, current_page, last_page} = res.data.posts;
+
+                        this.posts = data;
+
+                        this.pagination = {
+                            currentPage: current_page,
+                            lastPage: last_page,
+                        }
+
                     })
                     .finally(() => (this.isLoading = false));
             }
