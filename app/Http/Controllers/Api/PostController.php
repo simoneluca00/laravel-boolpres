@@ -50,7 +50,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        // non viene utilizzato il metodo tradizionale (Post $post) perchè non sarebbe possibile passare anche il metodo with (quindi tutte le relazioni associate)
+        $post = Post::with('Category', 'tags')->find($id);
+
+        return response()->json( $post );
     }
 
     /**

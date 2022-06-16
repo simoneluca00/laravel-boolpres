@@ -2,20 +2,25 @@
     <div>
         <Header />
 
-        <Main />
+        <main>
+            <div class="container">
+
+                <router-view> </router-view>
+
+            </div>
+        </main>
     </div>
 </template>
 
 <script>
-import Header from '../components/layout/Header.vue';
-import Main from '../components/layout/Main.vue';
+    import Header from '../components/layout/Header.vue';
 
     export default {
         name: 'App',
 
         components: {
             Header,
-            Main,
         }
     }
+
 </script>

@@ -22,5 +22,6 @@ Route::namespace('Api')->group(function(){
     
     // NOTE 1) in questo caso la rotta richiama soltanto la public function index del Controller
     Route::get('/posts', 'PostController@index');
+    Route::get('/posts/{id}', 'PostController@show');
 
 });

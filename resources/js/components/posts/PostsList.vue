@@ -27,6 +27,9 @@
 
                     </h5>
                 </div>
+                <div class="card-footer text-center">
+                    <router-link :to="{name: 'post-details', params: { id: post.id } }" class="btn btn-primary">View Info</router-link>
+                </div>
             </div>
         </div>
 
