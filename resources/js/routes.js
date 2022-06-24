@@ -10,7 +10,7 @@ Vue.use(VueRouter);
 // 4) Import dei components
 import HomePage from './components/pages/HomePage.vue'
 import ContactPage from './components/pages/ContactPage.vue'
-import PostDetails from './components/pages/PostDetails.vue'
+import PostDetails from './components/posts/PostDetails.vue'
 import NotFoundPage from './components/pages/NotFoundPage.vue'
 
 // 5) Inizializzare il router
@@ -26,7 +26,7 @@ const router = new VueRouter({
     routes: [
         {path: '/', component: HomePage, name: 'home'},
         {path: '/contacts', component: ContactPage, name: 'contacts'},
-        {path: '/posts/:id', component: PostDetails, name:'post-details'},
+        {path: '/posts/:slug', component: PostDetails, name:'post-details'},
         {path: '*', component: NotFoundPage, name: 'notFound'}
     ]
 });

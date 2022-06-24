@@ -8,7 +8,7 @@
             </li>
 
             <li class="page-item" v-for="page in paginationProps.lastPage" :key="page" @click="$emit('on-page-change', page)">
-                <a class="page-link" href="#" :class="paginationProps.currentPage == page ? 'bg-primary text-white' : ''">{{page}}</a>
+                <a class="page-link shadow-none" href="#" :class="paginationProps.currentPage == page ? 'bg-primary text-white' : ''">{{page}}</a>
             </li>
 
             <li class="page-item" v-if="paginationProps.currentPage < paginationProps.lastPage">

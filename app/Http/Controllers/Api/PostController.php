@@ -48,10 +48,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        // non viene utilizzato il metodo tradizionale (Post $post) perchè non sarebbe possibile passare anche il metodo with (quindi tutte le relazioni associate)
-        $post = Post::with('Category', 'tags')->find($id);
+        
+        $post = Post::where('slug', $slug)->with('Category', 'tags')->first();
+
+        if (!$post) {
+            return response('Il post non esiste...', 404);
+        }
 
         return response()->json( $post );
     }

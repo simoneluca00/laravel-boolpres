@@ -28,7 +28,7 @@
                     </h5>
                 </div>
                 <div class="card-footer text-center">
-                    <router-link :to="{name: 'post-details', params: { id: post.id } }" class="btn btn-primary">View Info</router-link>
+                    <router-link :to="{name: 'post-details', params: { slug: post.slug } }" class="btn btn-primary">View Info</router-link>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 axios.get(`http://127.0.0.1:8000/api/posts?page=${page}`)
                     .then((res) => {
 
-                        // console.log(res.data.posts.data);
+                        console.log(res.data.posts.data);
 
                         const {data, current_page, last_page} = res.data.posts;
 
