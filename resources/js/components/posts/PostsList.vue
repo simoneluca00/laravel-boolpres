@@ -6,7 +6,7 @@
 
         <div v-if="posts.length">
 
-            <Pagination :paginationProps="pagination" />
+            <Pagination :paginationProps="pagination" @on-page-change="getPosts"/>
 
             <div class="card my-3" v-for="post in posts" :key="post.id">
                 <h4 class="card-header">{{post.title}}</h4>
@@ -62,8 +62,8 @@
 
         methods: {
 
-            getPosts() {
-                axios.get('http://127.0.0.1:8000/api/posts')
+            getPosts( page = 1) {
+                axios.get(`http://127.0.0.1:8000/api/posts?page=${page}`)
                     .then((res) => {
 
                         // console.log(res.data.posts.data);
